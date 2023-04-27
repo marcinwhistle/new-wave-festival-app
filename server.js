@@ -88,6 +88,7 @@ app.put('/concerts/:id', (req, res) => {
       concert.price = price;
       concert.day = day;
       concert.image = image;
+      updatedConcert = concert;
     }
   });
   if (updatedConcert) {
@@ -107,10 +108,11 @@ app.put('/seats/:id', (req, res) => {
       se.seat = seat;
       se.client = client;
       se.email = email;
+      updatedSeat = se;
     }
   });
   if (updatedSeat) {
-    req.status(200).json({ message: 'OK' });
+    res.status(200).json({ message: 'OK' });
   } else {
     res.status(404).json({ messsage: 'Seat not found' });
   }

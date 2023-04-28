@@ -10,7 +10,7 @@ router.route('/seats/:id').get((req, res) => {
   res.json(db.seats.find((s) => s.id === parseInt(req.params.id)));
 });
 
-router.route('/seats').get((req, res) => {
+router.route('/seats').post((req, res) => {
   const { day, seat, client, email } = req.body;
   const id = uuidv4();
   const newSeat = { id, day, seat, client, email };
@@ -18,7 +18,7 @@ router.route('/seats').get((req, res) => {
   res.status(200).json({ message: 'OK' });
 });
 
-router.route('/seats/:id').get((req, res) => {
+router.route('/seats/:id').put((req, res) => {
   const id = parseInt(req.params.id);
   const { day, seat, client, email } = req.body;
   let updatedSeat;
@@ -38,7 +38,7 @@ router.route('/seats/:id').get((req, res) => {
   }
 });
 
-router.route('/seats/:id').get((req, res) => {
+router.route('/seats/:id').delete((req, res) => {
   const id = req.params.id;
   const index = db.seats.findIndex((seat) => seat.id == id);
   if (index !== -1) {

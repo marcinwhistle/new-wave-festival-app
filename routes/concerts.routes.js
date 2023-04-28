@@ -10,7 +10,7 @@ router.route('/concerts/:id').get((req, res) => {
   res.json(db.concerts.find((c) => c.id === parseInt(req.params.id)));
 });
 
-router.route('/concerts').get((req, res) => {
+router.route('/concerts').post((req, res) => {
   const { performer, genre, price, day, image } = req.body;
   const id = uuidv4();
   const newConcert = { id, performer, genre, price, day, image };
@@ -18,7 +18,7 @@ router.route('/concerts').get((req, res) => {
   res.status(200).json({ message: 'OK' });
 });
 
-router.route('/concerts/:id').get((req, res) => {
+router.route('/concerts/:id').put((req, res) => {
   const id = parseInt(req.params.id);
   const { performer, genre, price, day, image } = req.body;
   let updatedConcert;
@@ -39,7 +39,7 @@ router.route('/concerts/:id').get((req, res) => {
   }
 });
 
-router.route('/concerts/:id').get((req, res) => {
+router.route('/concerts/:id').delete((req, res) => {
   const id = req.params.id;
   const index = db.concerts.findIndex((concert) => concert.id == id);
   if (index !== -1) {

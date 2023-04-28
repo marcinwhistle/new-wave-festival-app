@@ -1,0 +1,51 @@
+const express = require('express');
+const router = express.Router();
+const db = require('./../db');
+
+router.route('/seats').get((req, res) => {
+  res.json(db.seats);
+});
+
+router.route('/seats/:id').get((req, res) => {
+  res.json(db.seats.find((s) => s.id === parseInt(req.params.id)));
+});
+
+router.route('/seats').get((req, res) => {
+  const { day, seat, client, email } = req.body;
+  const id = uuidv4();
+  const newSeat = { id, day, seat, client, email };
+  db.seats.push(newSeat);
+  res.status(200).json({ message: 'OK' });
+});
+
+router.route('/seats/:id').get((req, res) => {
+  const id = parseInt(req.params.id);
+  const { day, seat, client, email } = req.body;
+  let updatedSeat;
+  db.seats.forEach((se) => {
+    if (se.id === id) {
+      se.day = day;
+      se.seat = seat;
+      se.client = client;
+      se.email = email;
+      updatedSeat = se;
+    }
+  });
+  if (updatedSeat) {
+    res.status(200).json({ message: 'OK' });
+  } else {
+    res.status(404).json({ messsage: 'Seat not found' });
+  }
+});
+
+router.route('/seats/:id').get((req, res) => {
+  const id = req.params.id;
+  const index = db.seats.findIndex((seat) => seat.id == id);
+  if (index !== -1) {
+    res.status(200).json({ message: 'OK' });
+  } else {
+    res.status(404).json({ message: 'Seat not found' });
+  }
+});
+
+module.exports = router;

@@ -54,6 +54,7 @@ const SeatChooser = ({ chosenDay, chosenSeat, updateSeat }) => {
           outline
           onClick={(e) => {
             updateSeat(e, seatId);
+            dispatch(loadSeatsRequest());
           }}
         >
           {seatId}

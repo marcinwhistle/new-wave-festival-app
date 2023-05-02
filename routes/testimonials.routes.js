@@ -3,9 +3,7 @@ const router = express.Router();
 const db = require('./../db');
 
 router.route('/testimonials/random').get((req, res) => {
-  const randomIndex = parseInt(
-    Math.floor(Math.random() * db.testimonials.length)
-  );
+  const randomIndex = Math.floor(Math.random() * db.testimonials.length);
   res.json(db.testimonials[randomIndex]);
 });
 

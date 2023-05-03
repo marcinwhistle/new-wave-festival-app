@@ -7,19 +7,20 @@ Application for Ticket order for Festiwal.
 - React
 - Redux
 - CSS/SASS
+- Express
 
 ## Features
-- Advanced filters for products
-- Changing currency
-- RWB
-- Swipe functionality 
+- Order Ticket
+- Server side rendering
+- Endpoints (GET, POST, PUT, DELETE)
 
 
 ## Screenshots
 
-[![homepage](https://github.com/Lemarczini21/furniture-shop/blob/main/public/images/screenshots/furniture1.png)
-[![homepage](https://github.com/Lemarczini21/furniture-shop/blob/main/public/images/screenshots/furniture2.png)
-[![homepage](https://github.com/Lemarczini21/furniture-shop/blob/main/public/images/screenshots/furniture3.png)
+[![homepage](https://github.com/Lemarczini21/rest-api-pr/blob/main/new1.png)
+[![homepage](https://github.com/Lemarczini21/rest-api-pr/blob/main/new2.png)
+[![homepage](https://github.com/Lemarczini21/rest-api-pr/blob/main/new3.png)
+
 
 ## Contact
 Created by Marcin Gwizdek - feel free to contact me!

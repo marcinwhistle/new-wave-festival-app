@@ -33,7 +33,6 @@ router.route('/concerts/:id').put((req, res) => {
     }
   });
   if (updatedConcert) {
-    db.concerts.splice(index, 1);
     res.status(200).json({ message: 'OK' });
   } else {
     res.status(404).json({ message: 'Concert not found' });
@@ -44,6 +43,7 @@ router.route('/concerts/:id').delete((req, res) => {
   const id = req.params.id;
   const index = db.concerts.findIndex((concert) => concert.id == id);
   if (index !== -1) {
+    db.concerts.splice(index, 1);
     res.status(200).json({ message: 'OK' });
   } else {
     res.status(404).json({ message: 'Concert not found' });

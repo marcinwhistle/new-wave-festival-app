@@ -42,6 +42,7 @@ router.route('/seats/:id').delete((req, res) => {
   const id = req.params.id;
   const index = db.seats.findIndex((seat) => seat.id == id);
   if (index !== -1) {
+    db.seats.splice(index, 1);
     res.status(200).json({ message: 'OK' });
   } else {
     res.status(404).json({ message: 'Seat not found' });

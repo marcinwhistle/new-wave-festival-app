@@ -47,7 +47,8 @@ router.route('/testimonials/:id').delete((req, res) => {
     (testimonial) => testimonial.id == id
   );
   if (index !== -1) {
-    res.status(200).json({ message: 'OK' });
+    db.testimonials.splice(index, 1);
+    res.status(200).json({ message: 'Testimonials removed' });
   } else {
     res.status(404).json({ message: 'Testimonial not found' });
   }

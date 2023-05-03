@@ -1,6 +1,6 @@
 # New Wave Festiwal App
 Application for Ticket order.
-> Live demo [https://replit.com/@Lemarczini21/furniture-shop](https://replit.com/@Lemarczini21/furniture-shop)
+> Live demo [https://new-wave-festival-app.lemarczini21.repl.co](https://new-wave-festival-app.lemarczini21.repl.co/)
 
 
 ## Technologies Used

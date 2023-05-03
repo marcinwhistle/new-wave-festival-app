@@ -1,5 +1,5 @@
 # New Wave Festiwal App
-Application for Ticket order for Festiwal.
+Application for Ticket order.
 > Live demo [https://replit.com/@Lemarczini21/furniture-shop](https://replit.com/@Lemarczini21/furniture-shop)
 
 

@@ -34,7 +34,7 @@ const OrderTicketForm = () => {
     socket.on('seatsUpdated', (seats) => {
       dispatch(loadSeats(seats));
     });
-  });
+  }, [dispatch]);
 
   const [order, setOrder] = useState({
     client: '',

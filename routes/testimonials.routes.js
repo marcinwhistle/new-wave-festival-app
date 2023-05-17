@@ -1,19 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const db = require('./../db');
+const Testimonial = require('../models/testimonial.model');
+const TestimonialController = require('../controllers/testimonials.controller');
 
-router.route('/testimonials/random').get((req, res) => {
-  const randomIndex = Math.floor(Math.random() * db.testimonials.length);
-  res.json(db.testimonials[randomIndex]);
-});
+// router.route('/testimonials').get((req, res) => {
+//   res.json(db.testimonials);
+// });
 
-router.route('/testimonials').get((req, res) => {
-  res.json(db.testimonials);
-});
+router.get('/testimonials', TestimonialController.getAll);
 
-router.route('/testimonials/:id').get((req, res) => {
-  res.json(db.testimonials.find((t) => t.id === parseInt(req.params.id)));
-});
+// router.route('/testimonials/random').get((req, res) => {
+//   const randomIndex = Math.floor(Math.random() * db.testimonials.length);
+//   res.json(db.testimonials[randomIndex]);
+// });
+
+router.get('/testimonials/random', TestimonialController.getRandom);
+
+// router.route('/testimonials/:id').get((req, res) => {
+//   res.json(db.testimonials.find((t) => t.id === parseInt(req.params.id)));
+// });
+
+router.get('/testimonials/:id', TestimonialController.getById);
 
 router.route('/testimonials').post((req, res) => {
   const { author, text } = req.body;

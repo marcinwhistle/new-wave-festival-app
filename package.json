@@ -9,7 +9,7 @@
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "start": "node ./node_modules/nodemon/bin/nodemon.js server.js"
+    "start": "nodemon server.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

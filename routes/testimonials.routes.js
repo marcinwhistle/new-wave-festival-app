@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const db = require('./../db');
-const Testimonial = require('../models/testimonial.model');
 const TestimonialController = require('../controllers/testimonials.controller');
 
 // router.route('/testimonials').get((req, res) => {
@@ -23,31 +21,9 @@ router.get('/testimonials/random', TestimonialController.getRandom);
 
 router.get('/testimonials/:id', TestimonialController.getById);
 
-router.route('/testimonials').post((req, res) => {
-  const { author, text } = req.body;
-  const id = uuidv4();
-  const newTestimonial = { id, author, text };
-  db.testimonials.push(newTestimonial);
-  res.status(200).json({ messege: 'OK' });
-});
+router.post('/testimonials', TestimonialController.addTes);
 
-router.route('/testimonials/:id').put((req, res) => {
-  const id = parseInt(req.params.id);
-  const { author, text } = req.body;
-  let updatedTestimonial;
-  db.testimonials.forEach((testimonial) => {
-    if (testimonial.id === id) {
-      testimonial.author = author;
-      testimonial.text = text;
-      updatedTestimonial = testimonial;
-    }
-  });
-  if (updatedTestimonial) {
-    res.status(200).json({ message: 'OK' });
-  } else {
-    res.status(404).json({ message: 'Testimonial not found' });
-  }
-});
+router.put('/testimonials/:id', TestimonialController.updateTes);
 
 router.route('/testimonials/:id').delete((req, res) => {
   const id = req.params.id;

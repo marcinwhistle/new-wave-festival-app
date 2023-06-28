@@ -42,19 +42,37 @@ exports.addTes = async (req, res) => {
 };
 
 exports.updateTes = async (req, res) => {
-  const id = parseInt(req.params.id);
   const { author, text } = req.body;
-  let updatedTestimonial;
-  db.testimonials.forEach((testimonial) => {
-    if (testimonial.id === id) {
-      testimonial.author = author;
-      testimonial.text = text;
-      updatedTestimonial = testimonial;
-    }
-  });
-  if (updatedTestimonial) {
-    res.status(200).json({ message: 'OK' });
-  } else {
-    res.status(404).json({ message: 'Testimonial not found' });
+  try {
+    const tes = await Testimonial.findByIdAndUpdate(req.params.id, {
+      author,
+      text,
+    });
+    if (tes) {
+      res.json(tes);
+    } else res.status(404).json({ message: 'Not Found...' });
+  } catch (err) {
+    res.status(500).json({ message: err });
   }
+};
+
+exports.deleteTes = async (req, res) => {
+  try {
+    const tes = await Testimonial.findByIdAndDelete(req.params.id);
+    if (tes) {
+      res.json(tes);
+    } else res.status(404).json({ message: 'Not Found...' });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+  // const id = req.params.id;
+  // const index = db.testimonials.findIndex(
+  //   (testimonial) => testimonial.id == id
+  // );
+  // if (index !== -1) {
+  //   db.testimonials.splice(index, 1);
+  //   res.status(200).json({ message: 'Testimonials removed' });
+  // } else {
+  //   res.status(404).json({ message: 'Testimonial not found' });
+  // }
 };

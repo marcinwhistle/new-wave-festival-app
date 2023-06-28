@@ -1,15 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const db = require('./../db');
-const { v4: uuidv4 } = require('uuid');
+const SeatController = require('../controllers/seats.controller.js');
 
-router.route('/seats').get((req, res) => {
-  res.json(db.seats);
-});
+router.get('/seats', SeatController.getAll);
 
-router.route('/seats/:id').get((req, res) => {
-  res.json(db.seats.find((s) => s.id === parseInt(req.params.id)));
-});
+router.get('/seats/:id', SeatController.getById);
 
 router.route('/seats').post((req, res) => {
   const { day, seat, client, email } = req.body;

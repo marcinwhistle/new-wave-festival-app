@@ -13,7 +13,7 @@ exports.getRandom = async (req, res) => {
     const count = await Testimonial.countDocuments();
     const rand = Math.floor(Math.random() * count);
     const tes = await Testimonial.findOne().skip(rand);
-    if (!tes) res.status(404).json({ message: 'Not found..!!!.' });
+    if (!tes) res.status(404).json({ message: 'Not found...' });
     else res.json(tes);
   } catch (err) {
     res.status(500).json({ message: err });
@@ -23,7 +23,7 @@ exports.getRandom = async (req, res) => {
 exports.getById = async (req, res) => {
   try {
     const tes = await Testimonial.findById(req.params.id);
-    if (!tes) res.status(404).json({ message: 'Not Found...123' });
+    if (!tes) res.status(404).json({ message: 'Not Found...' });
     else res.json(tes);
   } catch (err) {
     res.status(500).json({ message: err });
@@ -65,14 +65,4 @@ exports.deleteTes = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err });
   }
-  // const id = req.params.id;
-  // const index = db.testimonials.findIndex(
-  //   (testimonial) => testimonial.id == id
-  // );
-  // if (index !== -1) {
-  //   db.testimonials.splice(index, 1);
-  //   res.status(200).json({ message: 'Testimonials removed' });
-  // } else {
-  //   res.status(404).json({ message: 'Testimonial not found' });
-  // }
 };

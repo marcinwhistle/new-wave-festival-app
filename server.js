@@ -34,7 +34,7 @@ app.use((req, res) => {
 
 // connects our backend code with the database
 mongoose.connect(
-  'mongodb+srv://Lemarczini:Thundercat661!a@cluster0.54dq3zf.mongodb.net/?retryWrites=true&w=majority',
+  'mongodb+srv://Lemarczini:Thundercat661@cluster0.54dq3zf.mongodb.net/NewVaveDB?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
   }

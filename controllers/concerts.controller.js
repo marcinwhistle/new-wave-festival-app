@@ -4,7 +4,7 @@ exports.getAll = async (req, res) => {
   try {
     res.json(await Concert.find());
   } catch (err) {
-    res.status(500).json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -14,7 +14,7 @@ exports.getById = async (req, res) => {
     if (!con) res.status(404).json({ message: 'Not Found...' });
     else res.json(con);
   } catch (err) {
-    res.status(500).json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -25,7 +25,7 @@ exports.addCon = async (req, res) => {
     await newConcert.save();
     res.json({ message: 'OK' });
   } catch (err) {
-    res.status(500).json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -43,7 +43,7 @@ exports.updateCon = async (req, res) => {
       res.json(con);
     } else res.status(404).json({ message: 'Not Found' });
   } catch (err) {
-    res.status(500).json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -54,6 +54,6 @@ exports.deleteCon = async (req, res) => {
       res.json(con);
     } else res.status(404).json({ message: 'Not Found...' });
   } catch (err) {
-    res.status(500).json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 };

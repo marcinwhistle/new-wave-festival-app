@@ -4,7 +4,8 @@ exports.getAll = async (req, res) => {
   try {
     res.json(await Testimonial.find());
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -16,7 +17,8 @@ exports.getRandom = async (req, res) => {
     if (!tes) res.status(404).json({ message: 'Not found...' });
     else res.json(tes);
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -26,7 +28,8 @@ exports.getById = async (req, res) => {
     if (!tes) res.status(404).json({ message: 'Not Found...' });
     else res.json(tes);
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -37,7 +40,8 @@ exports.addTes = async (req, res) => {
     await newTestimonial.save();
     res.json({ messege: 'OK' });
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -52,7 +56,8 @@ exports.updateTes = async (req, res) => {
       res.json(tes);
     } else res.status(404).json({ message: 'Not Found...' });
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -63,6 +68,7 @@ exports.deleteTes = async (req, res) => {
       res.json(tes);
     } else res.status(404).json({ message: 'Not Found...' });
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };

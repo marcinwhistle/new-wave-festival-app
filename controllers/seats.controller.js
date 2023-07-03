@@ -4,7 +4,8 @@ exports.getAll = async (req, res) => {
   try {
     res.json(await Seat.find());
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -14,7 +15,8 @@ exports.getById = async (req, res) => {
     if (!seat) res.status(404).json({ message: 'Not Found...' });
     else res.json(seat);
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -31,7 +33,8 @@ exports.addSeat = async (req, res) => {
     await newSeat.save();
     res.json({ message: 'OK' });
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -64,7 +67,8 @@ exports.updateSeat = async (req, res) => {
       res.json(updatedSeat);
     } else res.status(404).json({ message: 'Not Found' });
   } catch (err) {
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -75,7 +79,7 @@ exports.deleteSeat = async (req, res) => {
       res.json(delatedSeat);
     } else res.status(404).json({ message: 'Not Found' });
   } catch (err) {
-    // console.log(err.message);
-    res.status(500).json({ message: err });
+    console.log(err.message);
+    res.status(500).json({ message: err.message });
   }
 };

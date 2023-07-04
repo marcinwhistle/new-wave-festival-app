@@ -2,7 +2,7 @@
 
 Application for Ticket order.
 
-> Live demo [https://new-wave-festival-app.lemarczini21.repl.co](https://new-wave-festival-app.lemarczini21.repl.co/)
+> Live demo [https://rest-api-pr.lemarczini21.repl.co](https://rest-api-pr.lemarczini21.repl.co)
 
 ## Technologies Used
 

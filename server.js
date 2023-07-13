@@ -32,13 +32,15 @@ app.use((req, res) => {
   res.status(404).send('404 not found...');
 });
 
+const dbURI =
+  process.env.NODE_ENV === 'production'
+    ? `mongodb+srv://Lemarczini:${process.env.DB_PASS}@cluster0.54dq3zf.mongodb.net/NewVaveDB?retryWrites=true&w=majority`
+    : 'mongodb://localhost:27017/NewWaveDB';
+
 // connects our backend code with the database
-mongoose.connect(
-  'mongodb+srv://Lemarczini:Thundercat661@cluster0.54dq3zf.mongodb.net/NewVaveDB?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-  }
-);
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+});
 
 const db = mongoose.connection;
 

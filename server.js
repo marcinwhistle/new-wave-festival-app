@@ -3,8 +3,12 @@ const cors = require('cors');
 const path = require('path');
 const socket = require('socket.io');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 
 const app = express();
+
+// Helmet middleware for secure HTTP headers
+app.use(helmet());
 
 //import routes
 const testimonialRoutes = require('./routes/testimonials.routes');

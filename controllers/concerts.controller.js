@@ -62,8 +62,8 @@ exports.getByArtist = async (req, res) => {
   try {
     const performer = req.params.performer;
     const art = await Concert.find({ performer: performer });
-    if (art) {
-      res.json(art.length > 0);
+    if (art.length > 0) {
+      res.json(art);
     } else res.status(404).json({ message: 'Not Found...' });
   } catch (err) {
     res.status(500).json({ message: err.message });

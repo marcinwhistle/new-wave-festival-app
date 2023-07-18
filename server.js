@@ -36,16 +36,21 @@ app.use((req, res) => {
   res.status(404).send('404 not found...');
 });
 
+// connects our backend code with the database
+
 const dbURI =
   process.env.NODE_ENV === 'production'
     ? `mongodb+srv://Lemarczini:${process.env.DB_PASS}@cluster0.54dq3zf.mongodb.net/NewVaveDB?retryWrites=true&w=majority`
     : 'mongodb://localhost:27017/NewWaveDB';
 
-// connects our backend code with the database
-mongoose.connect(dbURI, {
-  useNewUrlParser: true,
-});
+const NODE_ENV = process.env.NODE_ENV;
+let dbUri = '';
 
+if (NODE_ENV === 'production') dbUri = process.env.DB_URL;
+else if (NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/companyDBtest';
+else dbUri = 'mongodb://localhost:27017/NewWaveDB';
+
+mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
@@ -62,3 +67,5 @@ const io = socket(server);
 io.on('connection', (socket) => {
   console.log('New socket!', socket.id);
 });
+
+module.exports = server;

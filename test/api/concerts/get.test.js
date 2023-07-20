@@ -10,7 +10,7 @@ const Concert = require('../../../models/concert.model');
 
 describe('GET /api/concerts', () => {
   before(async () => {
-    const testConOne = new Concert({
+    const testConcertOne = new Concert({
       _id: '6464b5947009b0abb2d1517a',
       performer: 'Rebekah Parker',
       genre: 'R&B',
@@ -18,9 +18,9 @@ describe('GET /api/concerts', () => {
       day: 1,
       image: '/img/uploads/2f342s4fsdg.jpg',
     });
-    await testConOne.save();
+    await testConcertOne.save();
 
-    const testConTwo = new Concert({
+    const testConcertTwo = new Concert({
       _id: '6464b5947009b0abb2d1517b',
       performer: 'Maybell Haley',
       genre: 'Pop',
@@ -28,7 +28,7 @@ describe('GET /api/concerts', () => {
       day: 1,
       image: '/img/uploads/hdfh42sd213.jpg',
     });
-    await testConTwo.save();
+    await testConcertTwo.save();
   });
 
   after(async () => {
